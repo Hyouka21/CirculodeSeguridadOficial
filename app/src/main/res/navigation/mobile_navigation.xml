@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.sosa.circulodeseguridadoficial.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.sosa.circulodeseguridadoficial.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.sosa.circulodeseguridadoficial.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_grupo"
+        android:name="com.sosa.circulodeseguridadoficial.ui.grupo.MisGrupos"
+        android:label="grupo_fragment"
+        tools:layout="@layout/grupo_fragment" >
+        <action
+            android:id="@+id/action_nav_grupo_to_crearGrupo"
+            app:destination="@id/crearGrupo" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearGrupo"
+        android:name="com.sosa.circulodeseguridadoficial.ui.grupo.CrearGrupo"
+        android:label="crear_grupo_fragment"
+        tools:layout="@layout/crear_grupo_fragment" >
+        <action
+            android:id="@+id/action_crearGrupo_to_nav_grupo"
+            app:destination="@id/nav_grupo" />
+        <action
+            android:id="@+id/action_crearGrupo_to_grupoMapaFragment"
+            app:destination="@id/grupoMapaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/grupoMapaFragment"
+        android:name="com.sosa.circulodeseguridadoficial.ui.localizacionGrupo.GrupoMapaFragment"
+        android:label="fragment_grupo_mapa"
+        tools:layout="@layout/fragment_grupo_mapa" >
+        <action
+            android:id="@+id/action_grupoMapaFragment_to_crearGrupo"
+            app:destination="@id/crearGrupo" />
+    </fragment>
+</navigation>
