@@ -99,6 +99,8 @@ public class ApiClient {
         Call<Integer> enviarLocalizacion(@Header("Authorization") String token, @Body CrearLocalizacion crearLocalizacion);
         @GET("grupo/obtener")
         Call<List<Grupo>> obtenerGrupos(@Header("Authorization") String token);
+        @GET("grupo/obtenerAdmin")
+        Call<List<Grupo>> obtenerGruposAdmin(@Header("Authorization") String token);
         @POST("localizacion/obtenerLocalizacion")
         Call<List<LocalizacionUsuario>> obtenerLocalizaciones(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
         @POST("grupo/crear")

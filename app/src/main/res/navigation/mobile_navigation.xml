@@ -13,9 +13,13 @@
 
     <fragment
         android:id="@+id/nav_admin"
-        android:name="com.sosa.circulodeseguridadoficial.ui.gallery.AdministrarFragment"
+        android:name="com.sosa.circulodeseguridadoficial.ui.administrar.AdministrarFragment"
         android:label="Administrar"
-        tools:layout="@layout/fragment_administrar" />
+        tools:layout="@layout/fragment_administrar" >
+        <action
+            android:id="@+id/action_nav_admin_to_administrarSubscripciones"
+            app:destination="@id/administrarSubscripciones" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -51,5 +55,26 @@
         <action
             android:id="@+id/action_grupoMapaFragment_to_crearGrupo"
             app:destination="@id/crearGrupo" />
+    </fragment>
+    <fragment
+        android:id="@+id/administrarSubscripciones"
+        android:name="com.sosa.circulodeseguridadoficial.ui.administrar.AdministrarSubscripciones"
+        android:label="administrar_subscripciones_fragment"
+        tools:layout="@layout/administrar_subscripciones_fragment" >
+        <action
+            android:id="@+id/action_administrarSubscripciones_to_nav_admin"
+            app:destination="@id/nav_admin" />
+        <action
+            android:id="@+id/action_administrarSubscripciones_to_cambiarFragment"
+            app:destination="@id/cambiarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cambiarFragment"
+        android:name="com.sosa.circulodeseguridadoficial.ui.administrar.CambiarFragment"
+        android:label="cambiar_fragment"
+        tools:layout="@layout/cambiar_fragment" >
+        <action
+            android:id="@+id/action_cambiarFragment_to_administrarSubscripciones"
+            app:destination="@id/administrarSubscripciones" />
     </fragment>
 </navigation>
