@@ -1,5 +1,7 @@
 package com.sosa.circulodeseguridadoficial;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -20,11 +22,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sosa.circulodeseguridadoficial.databinding.ActivityMainBinding;
 import com.sosa.circulodeseguridadoficial.entidades.UsuarioDto;
+import com.sosa.circulodeseguridadoficial.servicios.ServicioLocalizacion;
 
 public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel mViewModel;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private  Intent intentLocalizacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_grupo)
+                R.id.nav_home, R.id.nav_admin, R.id.nav_slideshow,R.id.nav_grupo)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -71,10 +75,26 @@ public class MainActivity extends AppCompatActivity {
                 nombre.setText(usuarioDto.getNickName());
                 correo.setText(usuarioDto.getEmail());
 
+               // iniciarServicio()
             }
         });
 
     }
+public void iniciarServicio(){
+    SharedPreferences sp = getApplicationContext().getSharedPreferences("datos",0);
+    String token = sp.getString("token","-1");
+    intentLocalizacion= new Intent(getApplicationContext(), ServicioLocalizacion.class);
+    intentLocalizacion.putExtra("token",token);
+    getApplicationContext().startService(intentLocalizacion);
+}
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(intentLocalizacion!=null) {
+            getApplicationContext().stopService(intentLocalizacion);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

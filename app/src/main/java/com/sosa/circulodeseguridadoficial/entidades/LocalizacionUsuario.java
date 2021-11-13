@@ -43,7 +43,9 @@ public class LocalizacionUsuario implements Serializable {
     }
 
     public String getUrlAvatar() {
-        return urlAvatar;
+        String url = "http://192.169.1.4:45455/"+urlAvatar.replace("\\", "/");
+
+        return url;
     }
 
     public void setUrlAvatar(String urlAvatar) {

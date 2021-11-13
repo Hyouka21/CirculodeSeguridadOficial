@@ -62,10 +62,13 @@ public class MisGrupos extends Fragment {
                 RVMisGrupos.setAdapter(grupoAdapter);
             }
         });
-        mViewModel.setGrupos();
+        //mViewModel.setGrupos();
         return root;
     }
 
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.setGrupos();
+    }
 }

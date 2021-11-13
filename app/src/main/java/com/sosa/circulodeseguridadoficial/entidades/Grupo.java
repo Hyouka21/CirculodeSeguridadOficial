@@ -1,5 +1,7 @@
 package com.sosa.circulodeseguridadoficial.entidades;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 public class Grupo implements Serializable {
@@ -34,7 +36,9 @@ public class Grupo implements Serializable {
     }
 
     public String getAvatarGrupo() {
-        return "http://192.169.1.4:45455/"+avatarGrupo.replace("\\", "/");
+        String url = "http://192.169.1.4:45455/"+avatarGrupo.replace("\\", "/");
+        Log.d("pas13",url);
+        return url;
     }
 
     public void setAvatarGrupo(String avatarGrupo) {

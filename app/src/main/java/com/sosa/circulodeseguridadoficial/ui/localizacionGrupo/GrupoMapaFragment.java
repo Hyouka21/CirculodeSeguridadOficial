@@ -6,16 +6,24 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sosa.circulodeseguridadoficial.R;
@@ -30,6 +38,7 @@ public class GrupoMapaFragment extends Fragment {
     private OnMapReadyCallback callback;
     private Thread hilo ;
     private boolean suspender=false;
+    private Bitmap foto;
     SupportMapFragment mapFragment;
     @Nullable
     @Override
@@ -77,8 +86,28 @@ public class GrupoMapaFragment extends Fragment {
                         {
 
                             latLng= new LatLng(locUsu.getCoordenadaX(), locUsu.getCoordenadaY());
-                            googleMap.addMarker(new MarkerOptions().position(latLng)
-                                    .title(locUsu.getNickName()));
+                            Log.d("ex",locUsu.getUrlAvatar());
+                            Glide.with(getActivity())
+                                    .asBitmap()
+                                    .load(locUsu.getUrlAvatar())
+                                    .apply(new RequestOptions().override(100, 100))
+                                    .into(new CustomTarget<Bitmap>() {
+                                        @Override
+                                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                                            foto = resource;
+                                        }
+
+                                        @Override
+                                        public void onLoadCleared(@Nullable Drawable placeholder) {
+                                        }
+                                    });
+                            if(foto==null){
+                                googleMap.addMarker(new MarkerOptions().position(latLng)
+                                        .title(locUsu.getNickName()));
+                            }else {
+                                googleMap.addMarker(new MarkerOptions().position(latLng)
+                                        .title(locUsu.getNickName()).icon(BitmapDescriptorFactory.fromBitmap(foto)));
+                            }
                         }
 
 

@@ -65,6 +65,16 @@ public class CrearGrupo extends Fragment {
             mViewModel.crearGrupo(crearGrupos);
             }
         });
+        mViewModel.getCrear().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                imagen1=null;
+                binding.TVImagen.setVisibility(View.INVISIBLE);
+                binding.ETDescripcion.setText("");
+                binding.ETNombre.setText("");
+
+            }
+        });
         return root;
     }
 

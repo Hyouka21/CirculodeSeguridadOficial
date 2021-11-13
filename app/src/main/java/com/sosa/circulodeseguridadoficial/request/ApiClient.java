@@ -6,6 +6,7 @@ import com.sosa.circulodeseguridadoficial.entidades.Grupo;
 import com.sosa.circulodeseguridadoficial.entidades.LocalizacionUsuario;
 import com.sosa.circulodeseguridadoficial.entidades.UsuarioDto;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearGrupos;
+import com.sosa.circulodeseguridadoficial.entidades.dto.CrearLocalizacion;
 import com.sosa.circulodeseguridadoficial.entidades.dto.IdentificadorDto;
 
 import java.security.cert.CertificateException;
@@ -93,6 +94,9 @@ public class ApiClient {
 
 
     public interface PostInterface{
+
+        @POST("localizacion/miLocalizacion")
+        Call<Integer> enviarLocalizacion(@Header("Authorization") String token, @Body CrearLocalizacion crearLocalizacion);
         @GET("grupo/obtener")
         Call<List<Grupo>> obtenerGrupos(@Header("Authorization") String token);
         @POST("localizacion/obtenerLocalizacion")

@@ -2,7 +2,9 @@ package com.sosa.circulodeseguridadoficial;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.sosa.circulodeseguridadoficial.entidades.UsuarioDto;
 import com.sosa.circulodeseguridadoficial.request.ApiClient;
+import com.sosa.circulodeseguridadoficial.servicios.ServicioLocalizacion;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +22,7 @@ import retrofit2.Response;
 public class MainActivityViewModel extends AndroidViewModel {
     private MutableLiveData<UsuarioDto> usuario ;
     private Context context;
-
+        private Intent intentLocalizacion;
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
@@ -52,10 +55,15 @@ public class MainActivityViewModel extends AndroidViewModel {
             }
         });
     }
-    public void actualizarPerfil(UsuarioDto u){
+    public void arrancarServicio(){
+        Log.d("Guardado", "Con exito");
 
-//      propietario.setValue(u);
 
+    }
+    public void apagarServicio(){
+        if(intentLocalizacion != null) {
+            context.stopService(intentLocalizacion);
+        }
     }
 
 
