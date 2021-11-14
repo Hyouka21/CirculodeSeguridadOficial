@@ -59,7 +59,7 @@ public class GrupoAdminAdapter extends RecyclerView.Adapter<GrupoAdminAdapter.Mi
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("grupo",i);
-                  Navigation.findNavController(root).navigate(R.id.grupoMapaFragment,bundle);
+                  Navigation.findNavController(root).navigate(R.id.administrarSubscripciones,bundle);
 
             }
         });

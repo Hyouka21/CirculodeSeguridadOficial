@@ -11,9 +11,15 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ActionMode;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ActionMenuView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -39,7 +45,10 @@ public class GrupoMapaFragment extends Fragment {
     private Thread hilo ;
     private boolean suspender=false;
     private Bitmap foto;
-    SupportMapFragment mapFragment;
+    private GoogleMap googleMap;
+    private SupportMapFragment mapFragment;
+    private LatLng latlogEvento;
+    ActionMode actionMode;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -74,6 +83,7 @@ public class GrupoMapaFragment extends Fragment {
 
             }
         });
+
         fragmentViewModel.getLocalizacion().observe(getViewLifecycleOwner(), new Observer<List<LocalizacionUsuario>>() {
             @Override
             public void onChanged(List<LocalizacionUsuario> localizacionUsuarios) {
@@ -111,12 +121,24 @@ public class GrupoMapaFragment extends Fragment {
                         }
 
 
-//                        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-//                        googleMap.setMinZoomPreference(15.0f);
-//                        googleMap.setMaxZoomPreference(20.0f);
+                      googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                        googleMap.setMinZoomPreference(15.0f);
+                       googleMap.setMaxZoomPreference(20.0f);
                     }
                 };
                 mapFragment.getMapAsync(callback);
+            }
+        });
+        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(@NonNull LatLng latLng) {
+               // aqui iria la inflacion del menu
+                latlogEvento = latLng;
+                    // Start the CAB using the ActionMode.Callback defined above
+                    actionMode = getActivity().startActionMode(actionModeCallback);
+
+
+
             }
         });
 
@@ -149,4 +171,43 @@ public class GrupoMapaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
     }
+
+    private ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
+
+        // Called when the action mode is created; startActionMode() was called
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            // Inflate a menu resource providing context menu items
+            MenuInflater inflater = mode.getMenuInflater();
+            inflater.inflate(R.menu.context_menu, menu);
+            return true;
+        }
+
+        // Called each time the action mode is shown. Always called after onCreateActionMode, but
+        // may be called multiple times if the mode is invalidated.
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false; // Return false if nothing is done
+        }
+
+        // Called when the user selects a contextual menu item
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.crearEventoItem:
+
+                    mode.finish(); // Action picked, so close the CAB
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        // Called when the user exits the action mode
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            actionMode = null;
+        }
+    };
+
 }

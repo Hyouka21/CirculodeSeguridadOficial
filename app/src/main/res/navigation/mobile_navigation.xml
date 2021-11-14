@@ -64,17 +64,5 @@
         <action
             android:id="@+id/action_administrarSubscripciones_to_nav_admin"
             app:destination="@id/nav_admin" />
-        <action
-            android:id="@+id/action_administrarSubscripciones_to_cambiarFragment"
-            app:destination="@id/cambiarFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/cambiarFragment"
-        android:name="com.sosa.circulodeseguridadoficial.ui.administrar.CambiarFragment"
-        android:label="cambiar_fragment"
-        tools:layout="@layout/cambiar_fragment" >
-        <action
-            android:id="@+id/action_cambiarFragment_to_administrarSubscripciones"
-            app:destination="@id/administrarSubscripciones" />
     </fragment>
 </navigation>

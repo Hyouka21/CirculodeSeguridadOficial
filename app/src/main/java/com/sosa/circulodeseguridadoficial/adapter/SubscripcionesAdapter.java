@@ -17,9 +17,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.Target;
 import com.sosa.circulodeseguridadoficial.R;
-import com.sosa.circulodeseguridadoficial.entidades.Grupo;
 import com.sosa.circulodeseguridadoficial.entidades.Subscripcion;
 import com.sosa.circulodeseguridadoficial.ui.administrar.AdministrarViewModel;
+import com.sosa.circulodeseguridadoficial.utilidades.EnviarDatosSubs;
 
 import java.util.List;
 
@@ -28,11 +28,12 @@ public class SubscripcionesAdapter extends RecyclerView.Adapter<SubscripcionesAd
     private View root ;
     private LayoutInflater inflater;
     private AdministrarViewModel mviewModel;
-
-    public SubscripcionesAdapter(List<Subscripcion> lista, View root, LayoutInflater inflater) {
+    private EnviarDatosSubs listen;
+    public SubscripcionesAdapter(List<Subscripcion> lista, View root, LayoutInflater inflater, EnviarDatosSubs listener) {
         this.lista = lista;
         this.root = root;
         this.inflater = inflater;
+        listen = listener;
     }
 
 
@@ -40,7 +41,7 @@ public class SubscripcionesAdapter extends RecyclerView.Adapter<SubscripcionesAd
     @Override
     public SubscripcionesAdapter.MiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = inflater.inflate(R.layout.item_grupo, parent, false);
+        View view = inflater.inflate(R.layout.item_subscripcion, parent, false);
         return new SubscripcionesAdapter.MiViewHolder(view);
     }
 
@@ -49,6 +50,7 @@ public class SubscripcionesAdapter extends RecyclerView.Adapter<SubscripcionesAd
 
 
         Subscripcion i = lista.get(position);
+        Log.d("ex",i.toString());
         holder.TVNombre.setText(i.getNickName());
         holder.TVEmail.setText(i.getEmail());
         String texto = null;
@@ -60,7 +62,6 @@ public class SubscripcionesAdapter extends RecyclerView.Adapter<SubscripcionesAd
             holder.botonCambiar.setText("Agregar");
         }
         holder.TVEstado.setText(texto);
-        Log.d("pas",i.getAvatar());
         Glide.with(root.getContext())//contexto
                 .load(i.getAvatar())//url de la imagen
                 .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
@@ -70,9 +71,8 @@ public class SubscripcionesAdapter extends RecyclerView.Adapter<SubscripcionesAd
         holder.botonCambiar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("subscripcion",i);
-                Navigation.findNavController(root).navigate(R.id.administrarSubscripciones,bundle);
+                listen.enviarInfo(i);
+
             }
         });
 

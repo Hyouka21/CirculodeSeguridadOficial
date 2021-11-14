@@ -4,9 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sosa.circulodeseguridadoficial.entidades.Grupo;
 import com.sosa.circulodeseguridadoficial.entidades.LocalizacionUsuario;
+import com.sosa.circulodeseguridadoficial.entidades.Subscripcion;
 import com.sosa.circulodeseguridadoficial.entidades.UsuarioDto;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearGrupos;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearLocalizacion;
+import com.sosa.circulodeseguridadoficial.entidades.dto.EditarSubscripcionDto;
 import com.sosa.circulodeseguridadoficial.entidades.dto.IdentificadorDto;
 
 import java.security.cert.CertificateException;
@@ -94,7 +96,10 @@ public class ApiClient {
 
 
     public interface PostInterface{
-
+        @POST("gruposusuarios/editarsubscripcion")
+        Call<Integer> editarSubscripcion(@Header("Authorization") String token, @Body EditarSubscripcionDto editarSubscripcionDto);
+        @POST("gruposusuarios/obtenersubcripciones")
+        Call<List<Subscripcion>> obtenerSubscripciones(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
         @POST("localizacion/miLocalizacion")
         Call<Integer> enviarLocalizacion(@Header("Authorization") String token, @Body CrearLocalizacion crearLocalizacion);
         @GET("grupo/obtener")

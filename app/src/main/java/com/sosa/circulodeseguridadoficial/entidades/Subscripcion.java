@@ -6,7 +6,7 @@ public class Subscripcion implements Serializable {
     private String email;
     private String nickName;
     private boolean estado;
-    private String Avatar;
+    private String avatar;
 
     public String getEmail() {
         return email;
@@ -33,10 +33,21 @@ public class Subscripcion implements Serializable {
     }
 
     public String getAvatar() {
-        return Avatar;
+        String url = "http://192.169.1.4:45455/"+avatar.replace("\\", "/");
+        return url;
     }
 
     public void setAvatar(String avatar) {
-        Avatar = avatar;
+        avatar = avatar;
+    }
+
+    @Override
+    public String toString() {
+        return "Subscripcion{" +
+                "email='" + email + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", estado=" + estado +
+                ", Avatar='" + avatar + '\'' +
+                '}';
     }
 }
