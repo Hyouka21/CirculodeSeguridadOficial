@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_grupoMapaFragment_to_crearGrupo"
             app:destination="@id/crearGrupo" />
+        <action
+            android:id="@+id/action_grupoMapaFragment_to_crearEventoFragment"
+            app:destination="@id/crearEventoFragment" />
     </fragment>
     <fragment
         android:id="@+id/administrarSubscripciones"
@@ -64,5 +67,14 @@
         <action
             android:id="@+id/action_administrarSubscripciones_to_nav_admin"
             app:destination="@id/nav_admin" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearEventoFragment"
+        android:name="com.sosa.circulodeseguridadoficial.ui.evento.CrearEventoFragment"
+        android:label="crear_evento_fragment"
+        tools:layout="@layout/crear_evento_fragment" >
+        <action
+            android:id="@+id/action_crearEventoFragment_to_grupoMapaFragment"
+            app:destination="@id/grupoMapaFragment" />
     </fragment>
 </navigation>

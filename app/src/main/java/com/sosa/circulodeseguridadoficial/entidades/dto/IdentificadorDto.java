@@ -1,6 +1,8 @@
 package com.sosa.circulodeseguridadoficial.entidades.dto;
 
-public class IdentificadorDto {
+import java.io.Serializable;
+
+public class IdentificadorDto implements Serializable {
     private String Identificador;
 
     public String getIdentificador() {

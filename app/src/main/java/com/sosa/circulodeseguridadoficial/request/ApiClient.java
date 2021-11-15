@@ -6,6 +6,7 @@ import com.sosa.circulodeseguridadoficial.entidades.Grupo;
 import com.sosa.circulodeseguridadoficial.entidades.LocalizacionUsuario;
 import com.sosa.circulodeseguridadoficial.entidades.Subscripcion;
 import com.sosa.circulodeseguridadoficial.entidades.UsuarioDto;
+import com.sosa.circulodeseguridadoficial.entidades.dto.CrearEventoDto;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearGrupos;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearLocalizacion;
 import com.sosa.circulodeseguridadoficial.entidades.dto.EditarSubscripcionDto;
@@ -96,6 +97,8 @@ public class ApiClient {
 
 
     public interface PostInterface{
+        @POST("evento/crear")
+        Call<Integer> crearEvento(@Header("Authorization") String token, @Body CrearEventoDto crearEventoDto);
         @POST("gruposusuarios/editarsubscripcion")
         Call<Integer> editarSubscripcion(@Header("Authorization") String token, @Body EditarSubscripcionDto editarSubscripcionDto);
         @POST("gruposusuarios/obtenersubcripciones")
