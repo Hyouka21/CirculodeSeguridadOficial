@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,8 +53,21 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.MiViewHolder
                 .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                .diskCacheStrategy(DiskCacheStrategy.ALL)// guarda en el cache
                .into(holder.imagen); // se encarga de setear la imagen
+        if(i.isEstado()){
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        }else{
+            holder.imagen.setMaxHeight(700);
+            holder.BTAdministrar.setVisibility(View.INVISIBLE);
+        }
+        holder.BTAdministrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("grupo",i);
+                Navigation.findNavController(root).navigate(R.id.administrarSubscripciones,bundle);
+            }
+        });
+        holder.BTVerMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -75,11 +89,17 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.MiViewHolder
     public class MiViewHolder extends RecyclerView.ViewHolder {
         private ImageView imagen;
         private TextView TVDetalle ,TVNombre;
+        private Button BTEmergencia , BTVerMapa,BTVerEvento,BTVerNotificacion,BTAdministrar;
         public MiViewHolder(@NonNull View itemView) {
             super(itemView);
             imagen = itemView.findViewById(R.id.TVCVImagen);
             TVNombre = itemView.findViewById(R.id.TVCVNombre);
             TVDetalle = itemView.findViewById(R.id.TVCVDetalle);
+            BTEmergencia= itemView.findViewById(R.id.BTEmergencia);
+            BTVerMapa = itemView.findViewById(R.id.BTVerMapa);
+            BTVerEvento = itemView.findViewById(R.id.BTVerEvento);
+            BTVerNotificacion= itemView.findViewById(R.id.BTVerNotificacion);
+            BTAdministrar = itemView.findViewById(R.id.BTAdministrar);
         }
     }
 }

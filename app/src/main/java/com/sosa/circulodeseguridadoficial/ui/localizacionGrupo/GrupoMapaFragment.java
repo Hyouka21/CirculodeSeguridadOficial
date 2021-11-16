@@ -47,11 +47,10 @@ public class GrupoMapaFragment extends Fragment {
     private GrupoMapaFragmentViewModel fragmentViewModel;
     private OnMapReadyCallback callback;
     private Thread hilo ;
-    private Bitmap foto;
     private GoogleMap googleMapD;
     private SupportMapFragment mapFragment;
     private LatLng latlogEvento;
-    private LatLng latLng;
+
     private ActionMode actionMode;
     private ActionMode actionModeUsu;
 
@@ -82,7 +81,6 @@ public class GrupoMapaFragment extends Fragment {
                 case R.id.crearEventoItem:
 
                     Bundle bundle = new Bundle();
-                    Log.d("Excepcion212", latlogEvento.toString() );
                     bundle.putSerializable("localiza",new Coordenada(""+latlogEvento.latitude ,""+latlogEvento.longitude));
                     bundle.putSerializable("ident",ident);
                     Navigation.findNavController(getView()).navigate(R.id.crearEventoFragment,bundle);
@@ -203,7 +201,6 @@ public class GrupoMapaFragment extends Fragment {
                     public void onMapLongClick(@NonNull LatLng latLng) {
                         // aqui iria la inflacion del menu
                         latlogEvento = latLng;
-                        Log.d("local", latLng.toString() + "iden " + ident.getIdentificador());
                         // Start the CAB using the ActionMode.Callback defined above
                         actionMode = getActivity().startActionMode(actionModeCallback);
 
@@ -218,8 +215,7 @@ public class GrupoMapaFragment extends Fragment {
         for(LocalizacionUsuario locUsu : localizacionUsuarios)
         {
 
-            latLng= new LatLng(locUsu.getCoordenadaX(), locUsu.getCoordenadaY());
-            Log.d("ex",locUsu.getUrlAvatar());
+//            latLng= new LatLng(locUsu.getCoordenadaX(), locUsu.getCoordenadaY());
             Glide.with(getActivity())
                     .asBitmap()
                     .load(locUsu.getUrlAvatar())
@@ -227,20 +223,24 @@ public class GrupoMapaFragment extends Fragment {
                     .into(new CustomTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                            foto = resource;
+                            googleMapD.addMarker(new MarkerOptions().position(new LatLng(locUsu.getCoordenadaX(), locUsu.getCoordenadaY()))
+                                    .title(locUsu.getNickName()).icon(BitmapDescriptorFactory.fromBitmap(resource)));
                         }
 
                         @Override
                         public void onLoadCleared(@Nullable Drawable placeholder) {
                         }
+
+                        @Override
+                        public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                            super.onLoadFailed(errorDrawable);
+                            googleMapD.addMarker(new MarkerOptions().position(new LatLng(locUsu.getCoordenadaX(), locUsu.getCoordenadaY()))
+                                    .title(locUsu.getNickName()));
+                        }
                     });
-            if(foto==null){
-                googleMapD.addMarker(new MarkerOptions().position(latLng)
-                        .title(locUsu.getNickName()));
-            }else {
-                googleMapD.addMarker(new MarkerOptions().position(latLng)
-                        .title(locUsu.getNickName()).icon(BitmapDescriptorFactory.fromBitmap(foto)));
-            }
+
+
+
         }
 
 
@@ -255,7 +255,29 @@ public class GrupoMapaFragment extends Fragment {
                 // Inflate a menu resource providing context menu items
                 MenuInflater inflater = mode.getMenuInflater();
                 for (LocalizacionUsuario locUsu : localizacionUsuarios) {
-                    int num = menu.add("usuario").setTitle(locUsu.getNickName()).setIcon(R.drawable.juan).getItemId();
+                    Glide.with(getActivity())
+                            .asBitmap()
+                            .load(locUsu.getUrlAvatar())
+                            .apply(new RequestOptions().override(100, 100))
+                            .into(new CustomTarget<Bitmap>() {
+                                @Override
+                                public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                                    Drawable drawable = new BitmapDrawable(getResources(), resource);
+                                    menu.add("usuario").setTitle(locUsu.getNickName()).setIcon(drawable).getItemId();
+                                }
+
+                                @Override
+                                public void onLoadCleared(@Nullable Drawable placeholder) {
+                                 //   menu.add("usuario").setTitle(locUsu.getNickName()).setIcon(placeholder).getItemId();
+                                }
+
+                                @Override
+                                public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                                    super.onLoadFailed(errorDrawable);
+                                    menu.add("usuario").setTitle(locUsu.getNickName()).setIcon(R.drawable.juan).getItemId();
+                                }
+                            });
+
 
                 }
                 inflater.inflate(R.menu.usuariosbuscarmenu, menu);
@@ -276,8 +298,8 @@ public class GrupoMapaFragment extends Fragment {
                 for (LocalizacionUsuario locUsu : localizacionUsuarios) {
 
                     if (item.getTitle() == locUsu.getNickName()) {
-                        latLng = new LatLng(locUsu.getCoordenadaX(), locUsu.getCoordenadaY());
-                        CameraUpdate center= CameraUpdateFactory.newLatLng(latLng);
+
+                        CameraUpdate center= CameraUpdateFactory.newLatLng(new LatLng(locUsu.getCoordenadaX(), locUsu.getCoordenadaY()));
                         CameraUpdate zoom=CameraUpdateFactory.zoomTo(15);
                         googleMapD.moveCamera(center);
                         googleMapD.animateCamera(zoom);

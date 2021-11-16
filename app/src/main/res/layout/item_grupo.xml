@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/TVCVImagen"
-                android:layout_width="600px"
-                android:layout_height="300px"
+                android:layout_width="match_parent"
+                android:layout_height="800px"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/logo" />
 
@@ -44,6 +44,36 @@
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/BTVerMapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ver Mapa" />
+
+                <Button
+                    android:id="@+id/BTVerEvento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ver Eventos" />
+
+                <Button
+                    android:id="@+id/BTVerNotificacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ver Notificaciones" />
+
+                <Button
+                    android:id="@+id/BTEmergencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Boton Emergencia" />
+
+                <Button
+                    android:id="@+id/BTAdministrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Administrar" />
             </LinearLayout>
 
         </LinearLayout>

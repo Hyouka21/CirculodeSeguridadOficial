@@ -57,7 +57,6 @@ public class CrearEventoFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(CrearEventoViewModel.class);
         Coordenada c = (Coordenada) getArguments().getSerializable("localiza");
         IdentificadorDto i = (IdentificadorDto) getArguments().getSerializable("ident");
-        Log.d("Excepcion212", c.getCoordenadaX()+" cpr "+c.getCoordeanadaY() );
         crearEventoDto.setIdentificador(i.getIdentificador());
         crearEventoDto.setCordenadaX(Float.parseFloat(c.getCoordenadaX()));
         crearEventoDto.setCoordenadaY(Float.parseFloat(c.getCoordeanadaY()));

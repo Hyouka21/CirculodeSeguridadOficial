@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_nav_grupo_to_crearGrupo"
             app:destination="@id/crearGrupo" />
+        <action
+            android:id="@+id/action_nav_grupo_to_administrarSubscripciones"
+            app:destination="@id/administrarSubscripciones" />
     </fragment>
     <fragment
         android:id="@+id/crearGrupo"
@@ -67,6 +70,9 @@
         <action
             android:id="@+id/action_administrarSubscripciones_to_nav_admin"
             app:destination="@id/nav_admin" />
+        <action
+            android:id="@+id/action_administrarSubscripciones_to_nav_grupo"
+            app:destination="@id/nav_grupo" />
     </fragment>
     <fragment
         android:id="@+id/crearEventoFragment"

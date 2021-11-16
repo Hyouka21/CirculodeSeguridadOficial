@@ -10,6 +10,15 @@ public class Grupo implements Serializable {
     private String descripcion;
     private String avatarGrupo;
     private String fechaCreacion;
+    private boolean estado;
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public String getIdentificador() {
         return identificador;
@@ -37,7 +46,7 @@ public class Grupo implements Serializable {
 
     public String getAvatarGrupo() {
         String url = "http://192.169.1.4:45455/"+avatarGrupo.replace("\\", "/");
-        Log.d("pas13",url);
+
         return url;
     }
 
