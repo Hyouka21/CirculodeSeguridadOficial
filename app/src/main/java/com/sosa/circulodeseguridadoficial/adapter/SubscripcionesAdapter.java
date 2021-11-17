@@ -1,6 +1,5 @@
 package com.sosa.circulodeseguridadoficial.adapter;
 
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,7 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.Target;
 import com.sosa.circulodeseguridadoficial.R;
 import com.sosa.circulodeseguridadoficial.entidades.Subscripcion;
-import com.sosa.circulodeseguridadoficial.ui.administrar.AdministrarViewModel;
+import com.sosa.circulodeseguridadoficial.ui.grupo.MisGruposViewModel;
 import com.sosa.circulodeseguridadoficial.utilidades.EnviarDatosSubs;
 
 import java.util.List;
@@ -27,7 +25,6 @@ public class SubscripcionesAdapter extends RecyclerView.Adapter<SubscripcionesAd
     private List<Subscripcion> lista;
     private View root ;
     private LayoutInflater inflater;
-    private AdministrarViewModel mviewModel;
     private EnviarDatosSubs listen;
     public SubscripcionesAdapter(List<Subscripcion> lista, View root, LayoutInflater inflater, EnviarDatosSubs listener) {
         this.lista = lista;

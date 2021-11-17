@@ -2,10 +2,13 @@ package com.sosa.circulodeseguridadoficial.request;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sosa.circulodeseguridadoficial.entidades.Evento;
 import com.sosa.circulodeseguridadoficial.entidades.Grupo;
 import com.sosa.circulodeseguridadoficial.entidades.LocalizacionUsuario;
+import com.sosa.circulodeseguridadoficial.entidades.Notificacion;
 import com.sosa.circulodeseguridadoficial.entidades.Subscripcion;
 import com.sosa.circulodeseguridadoficial.entidades.UsuarioDto;
+import com.sosa.circulodeseguridadoficial.entidades.dto.BuscarGrupoDto;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearEventoDto;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearGrupos;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearLocalizacion;
@@ -103,10 +106,16 @@ public class ApiClient {
         Call<Integer> editarSubscripcion(@Header("Authorization") String token, @Body EditarSubscripcionDto editarSubscripcionDto);
         @POST("gruposusuarios/obtenersubcripciones")
         Call<List<Subscripcion>> obtenerSubscripciones(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
+        @POST("evento/obtener")
+        Call<List<Evento>> obtenerEventos(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
+        @POST("notificacion/obtener")
+        Call<List<Notificacion>> obtenerNotificacion(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
         @POST("localizacion/miLocalizacion")
         Call<Integer> enviarLocalizacion(@Header("Authorization") String token, @Body CrearLocalizacion crearLocalizacion);
         @GET("grupo/obtener")
         Call<List<Grupo>> obtenerGrupos(@Header("Authorization") String token);
+        @POST("grupo/buscar")
+        Call<List<Grupo>> buscarGrupos(@Header("Authorization") String token, @Body BuscarGrupoDto buscarGrupoDto);
         @GET("grupo/obtenerAdmin")
         Call<List<Grupo>> obtenerGruposAdmin(@Header("Authorization") String token);
         @POST("localizacion/obtenerLocalizacion")
@@ -118,6 +127,10 @@ public class ApiClient {
         @FormUrlEncoded
         @POST("usuarios/login")
         Call<String> login(@Field("email") String email, @Field("clave") String clave);
+        @POST("gruposusuarios/subscribirse")
+        Call<Integer> subscribirse(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
+        @POST("gruposusuarios/desubscribirse")
+        Call<Integer> desubscribirse(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
 
 
 

@@ -45,6 +45,12 @@ public class MisGrupos extends Fragment {
                 Navigation.findNavController(root).navigate(R.id.crearGrupo);
             }
         });
+        binding.BTNBuscarG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(root).navigate(R.id.buscarGrupoFragment);
+            }
+        });
         RVMisGrupos = (RecyclerView) root.findViewById(R.id.RVMisGrupos);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(

@@ -53,12 +53,18 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.MiViewHolder
                 .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                .diskCacheStrategy(DiskCacheStrategy.ALL)// guarda en el cache
                .into(holder.imagen); // se encarga de setear la imagen
-        if(i.isEstado()){
-
-        }else{
+        if(!i.isEstado()){
             holder.imagen.setMaxHeight(700);
             holder.BTAdministrar.setVisibility(View.INVISIBLE);
         }
+        holder.BTVerNotificacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("grupo",i);
+                Navigation.findNavController(root).navigate(R.id.notificacionFragment,bundle);
+            }
+        });
         holder.BTAdministrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,13 +73,21 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.MiViewHolder
                 Navigation.findNavController(root).navigate(R.id.administrarSubscripciones,bundle);
             }
         });
+        holder.BTVerEvento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("grupo",i);
+                Navigation.findNavController(root).navigate(R.id.eventosFragment,bundle);
+            }
+        });
         holder.BTVerMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("grupo",i);
-                  Navigation.findNavController(root).navigate(R.id.grupoMapaFragment,bundle);
+                Navigation.findNavController(root).navigate(R.id.grupoMapaFragment,bundle);
 
             }
         });

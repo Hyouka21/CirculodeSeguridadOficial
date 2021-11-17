@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.grupo.MisGrupos" >
+    tools:context=".ui.buscarGrupo.BuscarGrupoFragment" >
 
     <LinearLayout
         android:layout_width="409dp"
@@ -14,26 +14,29 @@
         tools:layout_editor_absoluteY="1dp">
 
         <TextView
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mis Grupos"
+            android:text="Buscar Grupo"
             android:textAlignment="center"
             android:textSize="34sp" />
 
-        <Button
-            android:id="@+id/BTNCrear"
+        <EditText
+            android:id="@+id/ETNombreGrupo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crear Grupo" />
+            android:ems="10"
+            android:hint="Ingrese el nombre del grupo"
+            android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/BTNBuscarG"
+            android:id="@+id/BTBuscarRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buscar Grupo" />
+            android:text="Buscar" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RVMisGrupos"
+            android:id="@+id/RVGrupoBuscar"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

@@ -20,9 +20,9 @@
 
 
             <ImageView
-                android:id="@+id/TVCVImagen"
+                android:id="@+id/TVCVImagenGB"
                 android:layout_width="match_parent"
-                android:layout_height="800px"
+                android:layout_height="400px"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/logo" />
 
@@ -33,7 +33,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/TVCVNombre"
+                    android:id="@+id/TVCVNombreGB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
@@ -41,40 +41,18 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/TVCVDetalle"
+                    android:id="@+id/TVCVDetalleGB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/BTVerMapa"
+                    android:id="@+id/BTSubs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ver Mapa" />
+                    android:text="Subscribirse" />
 
-                <Button
-                    android:id="@+id/BTVerEvento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ver Eventos" />
 
-                <Button
-                    android:id="@+id/BTVerNotificacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ver Notificaciones" />
-
-                <Button
-                    android:id="@+id/BTEmergencia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Boton Emergencia" />
-
-                <Button
-                    android:id="@+id/BTAdministrar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Administrar" />
             </LinearLayout>
 
         </LinearLayout>

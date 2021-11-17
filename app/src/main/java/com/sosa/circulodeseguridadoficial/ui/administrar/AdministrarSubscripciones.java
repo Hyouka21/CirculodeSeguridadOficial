@@ -17,11 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.sosa.circulodeseguridadoficial.R;
-import com.sosa.circulodeseguridadoficial.adapter.GrupoAdapter;
-import com.sosa.circulodeseguridadoficial.adapter.GrupoAdminAdapter;
 import com.sosa.circulodeseguridadoficial.adapter.SubscripcionesAdapter;
 import com.sosa.circulodeseguridadoficial.databinding.AdministrarSubscripcionesFragmentBinding;
-import com.sosa.circulodeseguridadoficial.databinding.FragmentAdministrarBinding;
 import com.sosa.circulodeseguridadoficial.entidades.Subscripcion;
 import com.sosa.circulodeseguridadoficial.entidades.dto.IdentificadorDto;
 import com.sosa.circulodeseguridadoficial.utilidades.EnviarDatosSubs;

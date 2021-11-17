@@ -7,19 +7,25 @@
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/administrar_subscripciones_fragment.xml" value="0.12001811594202899" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/app_bar_main.xml" value="0.1" />
+        <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/buscar_grupo_fragment.xml" value="0.13677536231884058" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/content_main.xml" value="0.18795289855072464" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/crear_evento_fragment.xml" value="0.22" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/crear_grupo_fragment.xml" value="0.18" />
+        <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/eventos_fragment.xml" value="0.12395833333333334" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/fragment_administrar.xml" value="0.12001811594202899" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/fragment_gallery.xml" value="0.1" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/fragment_grupo_mapa.xml" value="0.1" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/grupo_fragment.xml" value="0.18795289855072464" />
+        <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/item_evento.xml" value="0.12395833333333334" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/item_grupo.xml" value="0.1" />
+        <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/item_grupobuscar.xml" value="0.17" />
+        <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/item_notificacion.xml" value="0.1" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/item_subscripcion.xml" value="0.12001811594202899" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/menu.xml" value="0.23357664233576642" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/menu_evento.xml" value="0.1" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/nav_header_main.xml" value="0.18795289855072464" />
+        <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/layout/notificacion_fragment.xml" value="0.12395833333333334" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/menu/activity_main_drawer.xml" value="0.19692307692307692" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/menu/context_menu.xml" value="0.1" />
         <entry key="..\:/Users/Gonza/AndroidStudioProjects/CirculodeSeguridadOficial/app/src/main/res/menu/main.xml" value="0.16018518518518518" />
