@@ -20,6 +20,8 @@ import com.sosa.circulodeseguridadoficial.R;
 import com.sosa.circulodeseguridadoficial.adapter.GrupoAdapter;
 import com.sosa.circulodeseguridadoficial.databinding.GrupoFragmentBinding;
 import com.sosa.circulodeseguridadoficial.entidades.Grupo;
+import com.sosa.circulodeseguridadoficial.entidades.dto.IdentificadorDto;
+import com.sosa.circulodeseguridadoficial.utilidades.EmergenciaInterfaz;
 
 import java.util.List;
 
@@ -63,7 +65,12 @@ public class MisGrupos extends Fragment {
             public void onChanged(List<Grupo> grupos) {
 
                 RVMisGrupos.setLayoutManager(linearLayoutManager);
-                grupoAdapter = new GrupoAdapter(grupos,root,getLayoutInflater());
+                grupoAdapter = new GrupoAdapter(grupos, root, getLayoutInflater(), new EmergenciaInterfaz() {
+                    @Override
+                    public void emergenciaAccion(Grupo grupo) {
+                        mViewModel.botonEmergencia(new IdentificadorDto(grupo.getIdentificador()));
+                    }
+                });
 
                 RVMisGrupos.setAdapter(grupoAdapter);
             }

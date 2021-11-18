@@ -6,6 +6,8 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -33,6 +35,7 @@ public class Login extends AppCompatActivity {
     private EditText emailE;
     private EditText claveE;
     private Button iniciarB;
+    private Button registrar;
     private TextView mensaje;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,7 @@ public class Login extends AppCompatActivity {
         validaPermisos();
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         inicializar();
-        loginViewModel.inicioAutomatico();
+     //   loginViewModel.inicioAutomatico();
         loginViewModel.getTokenMD().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String token) {
@@ -52,6 +55,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loginViewModel.iniciar(emailE.getText().toString(),claveE.getText().toString());
+            }
+        });
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, RegistrarActivity.class);
+                startActivity(intent);
+
             }
         });
         loginViewModel.getMensaje().observe(this, new Observer<Boolean>() {
@@ -69,7 +80,7 @@ public class Login extends AppCompatActivity {
         });
     }
     public void inicializar() {
-
+        registrar = findViewById(R.id.BTNRegistrar);
         emailE = findViewById(R.id.ETEmail);
         claveE = findViewById(R.id.ETClave);
         iniciarB = findViewById(R.id.BTIniciar);

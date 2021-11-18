@@ -14,6 +14,7 @@ import com.sosa.circulodeseguridadoficial.entidades.dto.CrearGrupos;
 import com.sosa.circulodeseguridadoficial.entidades.dto.CrearLocalizacion;
 import com.sosa.circulodeseguridadoficial.entidades.dto.EditarSubscripcionDto;
 import com.sosa.circulodeseguridadoficial.entidades.dto.IdentificadorDto;
+import com.sosa.circulodeseguridadoficial.entidades.dto.RegistrarUsuarioDto;
 
 import java.security.cert.CertificateException;
 import java.util.List;
@@ -131,8 +132,10 @@ public class ApiClient {
         Call<Integer> subscribirse(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
         @POST("gruposusuarios/desubscribirse")
         Call<Integer> desubscribirse(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
-
-
+        @POST("notificacion/emergencia")
+        Call<Integer> emergencia(@Header("Authorization") String token, @Body IdentificadorDto identificadorDto);
+        @POST("usuarios/registrar")
+        Call<Integer> registrarUsuario(@Header("Authorization") String token,@Body RegistrarUsuarioDto registrarUsuarioDto);
 
 
 

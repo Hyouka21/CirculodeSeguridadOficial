@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.Target;
 import com.sosa.circulodeseguridadoficial.R;
 import com.sosa.circulodeseguridadoficial.entidades.Grupo;
+import com.sosa.circulodeseguridadoficial.utilidades.EmergenciaInterfaz;
 
 import java.util.List;
 
@@ -25,11 +26,13 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.MiViewHolder
     private List<Grupo> lista;
     private View root ;
     private LayoutInflater inflater;
+    private EmergenciaInterfaz emergenciaInterfaz;
 
-    public GrupoAdapter(List<Grupo> lista, View root, LayoutInflater inflater) {
+    public GrupoAdapter(List<Grupo> lista, View root, LayoutInflater inflater,EmergenciaInterfaz emerg) {
         this.lista = lista;
         this.root = root;
         this.inflater = inflater;
+        emergenciaInterfaz=emerg;
     }
 
 
@@ -89,6 +92,12 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.MiViewHolder
                 bundle.putSerializable("grupo",i);
                 Navigation.findNavController(root).navigate(R.id.grupoMapaFragment,bundle);
 
+            }
+        });
+        holder.BTEmergencia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                emergenciaInterfaz.emergenciaAccion(i);
             }
         });
 

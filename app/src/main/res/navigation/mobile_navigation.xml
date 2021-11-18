@@ -106,4 +106,14 @@
             android:id="@+id/action_buscarGrupoFragment_to_nav_grupo"
             app:destination="@id/nav_grupo" />
     </fragment>
+    <fragment
+        android:id="@+id/registrarFragment"
+        android:name="com.sosa.circulodeseguridadoficial.ui.login.RegistrarFragment"
+        android:label="registrar_fragment"
+        tools:layout="@layout/registrar_fragment" />
+    <activity
+        android:id="@+id/login"
+        android:name="com.sosa.circulodeseguridadoficial.ui.login.Login"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

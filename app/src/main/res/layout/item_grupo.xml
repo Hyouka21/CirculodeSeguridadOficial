@@ -2,8 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|top"
+    android:layout_marginBottom="100px"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,7 +27,7 @@
             <ImageView
                 android:id="@+id/TVCVImagen"
                 android:layout_width="match_parent"
-                android:layout_height="800px"
+                android:layout_height="900px"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/logo" />
 
@@ -43,7 +48,7 @@
                 <TextView
                     android:id="@+id/TVCVDetalle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:textSize="16sp" />
 
                 <Button

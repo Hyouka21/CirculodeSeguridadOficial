@@ -37,7 +37,9 @@ public class UsuarioDto  {
 
 
     public String getAvatar() {
-        return avatar;
+        String url = "http://192.169.1.4:45455/"+avatar.replace("\\", "/");
+
+        return url;
     }
 
     public void setAvatar(String avatar) {
